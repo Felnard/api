@@ -4,9 +4,6 @@ const username = document.getElementById("username");
 const form = document.getElementById("form");
 const container = document.getElementById("container");
 
-// const repos = "https://api.github.com/users/felnard/repos";
-// console.log();
-
 async function getUser(userInput) {
   const resp = await fetch(api + userInput);
   const respData = await resp.json();

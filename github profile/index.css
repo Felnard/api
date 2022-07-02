@@ -8,7 +8,7 @@
 }
 
 body {
-  background-image: linear-gradient(315deg, #0e0372 10%, #1595df 54%);
+  background-image: linear-gradient(315deg, #231693 10%, #1595df 54%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -28,7 +28,7 @@ input[type="text"] {
 div.container {
   display: flex;
   align-items: center;
-  background-image: linear-gradient(315deg, #0f1383 10%, #282f96 54%);
+  background-image: linear-gradient(315deg, #2a2ea0 10%, #3b43b4 54%);
   max-width: 800px;
   padding: 30px;
   border-radius: 30px;
@@ -60,7 +60,7 @@ img {
   width: 150px;
   height: 150px;
   border-radius: 50%;
-  border: 10px solid #17065a;
+  border: 10px solid #291084;
   object-fit: cover;
   /* margin: ; */
 }
