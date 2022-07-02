@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <link rel="stylesheet" href="search.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <a href="index.html">Back</a>
+    <input type="text" id="inputSearch" />
+    <input type="button" value="Submit" class="searchButton" />
+    <div class="buttons">
+      <button id="7">7d</button>
+      <button id="14">14d</button>
+      <button id="30">30d</button>
+      <button id="90">90d</button>
+      <button id="180">180d</button>
+      <button id="year">1year</button>
+      <button id="all">All</button>
+    </div>
+    <div class="container">
+      <main class="deaths">
+        <canvas id="myChart" class="chart"></canvas>
+      </main>
+    </div>
+
+    <!-- <main class="cases">
+      <div class="buttons">
+        <button id="7">7d</button>
+        <button id="14">14d</button>
+        <button id="30">30d</button>
+        <button id="90">90d</button>
+        <button id="180">180d</button>
+        <button id="year">1year</button>
+        <button id="all">All</button>
+      </div>
+      <canvas id="myChart" class="chart"></canvas>
+    </main> -->
+
+    <script src="search.js"></script>
+  </body>
+</html>
