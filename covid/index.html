@@ -5,16 +5,32 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
-
+<link rel="stylesheet" href="index.css">
     <title>Document</title>
   </head>
 
   <body>
+
     <h1>This is an all Covid Cases tracker. It show data using an API. You can filter the data</h1>
-    <input type="text" id="input" />
-    <input type="button" value="Search" id="search" />
-    <form action=""></form>
+    <div class="search">
+      <input type="text" id="input" />
+      <input type="button" value="Search" id="search" />
+    </div>
+    <div class="randomTop">
+      
+      <!-- <div class="countries">
+        <img src="images/web development.png" alt="">
+        <p>Country</p>
+        <p>Population:31231231</p>
+      </div>  -->
+    </div>
+
+
+    <!-- <form action=""></form> -->
+    <div class="randomChart">
+      
     <canvas id="myChart" style="width: 100%; max-width: 1000px">
+    </div>
     <script src="index.js"></script>
   </body>
 </html>
