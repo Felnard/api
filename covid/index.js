@@ -3,7 +3,12 @@ const input = document.getElementById("input");
 const canvasChart = document.getElementById("myChart");
 const flagContainer = document.querySelector(".randomTop");
 
+// ALL DATA HOLDER
 let countries = [];
+let flagArray = [];
+
+// API STATS
+stats();
 function stats() {
   const optionss = {
     method: "GET",
@@ -18,15 +23,12 @@ function stats() {
     .then((response) => {
       console.log(response.response);
       countries = response.response;
+
+      showChart(countries[Math.floor(Math.random() * countries.length)]);
       getFlag();
-      showChart(
-        response.response[Math.floor(Math.random() * response.response.length)]
-      );
     })
     .catch((err) => console.error(err));
 }
-
-stats();
 
 // CHART JS
 function showChart(data) {
@@ -69,23 +71,35 @@ search.addEventListener("click", () => {
   window.location = "search.html";
 });
 
-// function randomFlag() {
-
-// }
-
+// show flags
 function getFlag() {
   flagContainer.innerHTML = "";
 
   for (let i = 0; i < 8; i++) {
-    let flag = countries[Math.floor(Math.random() * countries.length)].country;
+    let flag = countries[Math.floor(Math.random() * countries.length)];
 
-    let api = `https://countryflagsapi.com/png/${flag.replaceAll("-", " ")}`;
+    let api = `https://countryflagsapi.com/png/${flag.country.replaceAll(
+      "-",
+      " "
+    )}`;
     const countriesEl = document.createElement("div");
     countriesEl.classList.add("countries");
     countriesEl.innerHTML = `<img src="${api}" alt="">
-    <p class='countryName'>${flag}</p>
-    <p>Population:${countries[i].population}</p>`;
-    console.log(api.status);
+    <p class='countryName'>${flag.country}</p>
+    <p>Population:${flag.population}</p>`;
+
     flagContainer.appendChild(countriesEl);
   }
+  addEvent();
+}
+
+function addEvent() {
+  const countryLink = document.querySelectorAll(".countryName");
+  countryLink.forEach((country) => {
+    country.addEventListener("click", () => {
+      console.log(country.innerText);
+      sessionStorage.setItem("searchKey", country.innerText);
+      window.location = "search.html";
+    });
+  });
 }

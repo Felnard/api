@@ -26,19 +26,21 @@ h1 {
   font-size: 1.2rem;
 }
 div.randomTop {
+  /* background-color: var(--text-color); */
   display: flex;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
+  /* min- */
   width: 100%;
-  height: 230px;
 }
 div.countries {
   border: 1px solid var(--border);
   border-radius: 3px;
   padding: 1rem;
-  min-width: 200px;
-  height: 100%;
+  /* min-width: 200px; */
+
+  height: 230px;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   margin: 0 1rem;
 }
@@ -49,6 +51,11 @@ div.countries img {
 p.countryName {
   margin-top: 1rem;
   font-weight: bold;
+  cursor: pointer;
+}
+p.countryName:hover,
+.apis a:hover {
+  text-decoration: underline;
 }
 .randomChart {
   margin-top: 3rem;
@@ -58,3 +65,18 @@ p.countryName {
   background-color: var(--text-color);
   margin: 0 auto;
 }
+
+footer {
+  margin-top: 5rem;
+  padding: 3rem;
+  display: flex;
+  justify-content: space-around;
+  font-family: var(--bold);
+  background-color: rgb(37, 37, 37);
+  color: var(--text-color);
+}
+.apis a {
+  text-decoration: none;
+  color: var(--text-color);
+}
+/* fotter */

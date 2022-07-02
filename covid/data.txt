@@ -1,0 +1,6 @@
+
+.cases.Active
+.cases.Critical
+.cases.recovered
+.cases.total
+

@@ -10,24 +10,21 @@
   </head>
   <body>
     <a href="index.html">Back</a>
-    <input type="text" id="inputSearch" />
-    <input type="button" value="Submit" class="searchButton" />
-    <div class="buttons">
-      <button id="7">7d</button>
-      <button id="14">14d</button>
-      <button id="30">30d</button>
-      <button id="90">90d</button>
-      <button id="180">180d</button>
-      <button id="year">1year</button>
-      <button id="all">All</button>
+
+    <div class="search">
+      <input type="text" id="inputSearch" />
+      <input type="button" value="Submit" class="searchButton" />
     </div>
-    <div class="container">
-      <main class="deaths">
-        <canvas id="myChart" class="chart"></canvas>
+    <div class="flagContainer"></div>
+    <div class="barContainer">
+      <h1>Recent Cases</h1>
+      <main class="bar">
+        <canvas id="barChart" class="chart"></canvas>
       </main>
     </div>
 
-    <!-- <main class="cases">
+    <div class="container">
+      <h1>Deaths</h1>
       <div class="buttons">
         <button id="7">7d</button>
         <button id="14">14d</button>
@@ -37,9 +34,10 @@
         <button id="year">1year</button>
         <button id="all">All</button>
       </div>
-      <canvas id="myChart" class="chart"></canvas>
-    </main> -->
-
+      <main class="deaths">
+        <canvas id="myChart" class="chart"></canvas>
+      </main>
+    </div>
     <script src="search.js"></script>
   </body>
 </html>

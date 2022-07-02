@@ -6,15 +6,21 @@ const day180 = document.getElementById("180");
 const year1 = document.getElementById("year");
 const all = document.getElementById("all");
 const search = document.querySelector(".searchButton");
+const flagContainer = document.querySelector(".flagContainer");
 const input = document.getElementById("inputSearch");
-// const deathChart = document.getElementById("myChart");
-const container = document.querySelector(".container");
 
+const container = document.querySelector(".container");
+// BARCHART
+// const barChart = document.getElementById("barChart");
+const barContainer = document.querySelector(".barContainer");
 // GLOBAL VARIABLE FOR ALL DATA
 let historyData = [];
 // SESSOIN STORAGE
 let searchLocal = sessionStorage.getItem("searchKey");
+
 getSearch(searchLocal);
+
+// API
 
 async function getSearch(searchInput) {
   console.log(searchInput);
@@ -29,17 +35,19 @@ async function getSearch(searchInput) {
 
   const resp = await fetch(api, options);
   const respData = await resp.json();
-  console.log(api);
+  // console.log(api);
   by10(respData.response);
 }
 
-// PINAPABABA BY DAY
+// PINAPABABA BY DAY /DIVIDE BY 15
 function by10(data) {
   //   console.log(data + "fsadf");
   for (let i = 0; i < data.length; i += 15) {
     historyData.push(data[i]);
   }
   console.log(historyData);
+  getFlag(historyData[0]);
+  showBarChart(historyData);
   drawChart(historyData.slice(0, 7));
 }
 
@@ -72,6 +80,8 @@ all.addEventListener("click", () => {
   removeAndAdd();
   drawChart(historyData.slice(0, historyData.length));
 });
+
+// DRAWCHART
 
 function drawChart(data) {
   // YVALUES DATA
@@ -109,15 +119,54 @@ function drawChart(data) {
   });
 }
 
+// SEARCH
+
 search.addEventListener("click", (e) => {
   e.preventDefault();
   removeAndAdd();
-  //   createChart
-  // createElement();
+  removeBars();
   historyData = [];
   getSearch(input.value);
 });
 
+// CREATE BAR CHART
+function showBarChart(dataObject) {
+  // console.log(dataObject[0]);
+  const data = dataObject[0];
+  const newCases = dataObject[0].cases.new;
+
+  const { active, critical = 0, total, recovered } = data.cases;
+  const { continent, country, population, day } = data;
+
+  var xValues = [` Active Case`, "Critical", "New", "Recovered", "Total Cases"];
+  var yValues = [active, critical, Number(newCases), recovered, total];
+  console.log(active, critical, Number(newCases), recovered, total);
+  var barColors = ["#0ac542", "#000", "#f9dc5cff", "#2b5797", "#ed254eff"];
+  var colors = "#ffffff";
+
+  var chart = new Chart(document.getElementById("barChart"), {
+    type: "bar",
+    data: {
+      labels: xValues,
+
+      datasets: [
+        {
+          backgroundColor: barColors,
+          data: yValues,
+        },
+      ],
+    },
+    options: {
+      legend: { display: false },
+      title: {
+        display: true,
+        color: colors,
+        text: `${country}, ${continent}: ${day}`,
+      },
+    },
+  });
+}
+// REMOVE AND ADD LINE CHART DIV
 function removeAndAdd() {
   const main = document.querySelector(".deaths");
   main.remove();
@@ -130,4 +179,28 @@ function removeAndAdd() {
   container.appendChild(division);
 }
 
-function createElement() {}
+// REMOVE AND ADD BAR CHART DIV
+function removeBars() {
+  const barmain = document.querySelector(".bar");
+  barmain.remove();
+  const bardivision = document.createElement("main");
+  bardivision.setAttribute("class", "bar");
+  const barcanvas = document.createElement("canvas");
+  barcanvas.setAttribute("id", "barChart");
+
+  bardivision.appendChild(barcanvas);
+  barContainer.appendChild(bardivision);
+}
+
+function getFlag(flag) {
+  console.log(flag);
+  flagContainer.innerHTML = "";
+  let api = `https://countryflagsapi.com/png/${flag.country}`;
+  const countriesEl = document.createElement("div");
+  countriesEl.classList.add("countries");
+  countriesEl.innerHTML = `<img src="${api}" alt="">
+    <h2 class='countryName'>${flag.country}</h2>
+    <p>Population:${flag.population}</p>`;
+
+  flagContainer.appendChild(countriesEl);
+}

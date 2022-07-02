@@ -11,13 +11,15 @@
 
   <body>
 
-    <h1>This is an all Covid Cases tracker. It show data using an API. You can filter the data</h1>
+    <h1>This is website that shows all Covid related cases for every countries. <br>
+       It uses an Api for showing data.</h1>
+      
     <div class="search">
       <input type="text" id="input" />
       <input type="button" value="Search" id="search" />
     </div>
+
     <div class="randomTop">
-      
       <!-- <div class="countries">
         <img src="images/web development.png" alt="">
         <p>Country</p>
@@ -25,12 +27,18 @@
       </div>  -->
     </div>
 
-
-    <!-- <form action=""></form> -->
     <div class="randomChart">
-      
     <canvas id="myChart" style="width: 100%; max-width: 1000px">
     </div>
+
+    <footer>
+      <div class="copyright">© Copyright Felnard 2022</div>
+      <div class="apis">
+        <a href="https://rapidapi.com/api-sports/api/covid-193/" target="_blank">Flags API</a> <br>
+        <a href="https://countryflagsapi.com/" target="_blank">COVID-19 API</a>
+      </div>
+      
+    </footer>
     <script src="index.js"></script>
   </body>
 </html>
