@@ -8,7 +8,7 @@
 }
 
 body {
-  background-image: linear-gradient(315deg, #231693 10%, #1595df 54%);
+  background-image: pink;
   display: flex;
   align-items: center;
   justify-content: center;

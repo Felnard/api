@@ -5,6 +5,7 @@ const day90 = document.getElementById("90");
 const day180 = document.getElementById("180");
 const year1 = document.getElementById("year");
 const all = document.getElementById("all");
+
 const search = document.querySelector(".searchButton");
 const flagContainer = document.querySelector(".flagContainer");
 const input = document.getElementById("inputSearch");
@@ -20,7 +21,7 @@ let searchLocal = sessionStorage.getItem("searchKey");
 
 getSearch(searchLocal);
 
-// API
+// API SEARCH
 
 async function getSearch(searchInput) {
   console.log(searchInput);
